@@ -6,7 +6,7 @@ This repository there are a collections of projects with technologies I know or 
 
 ## Projects
 
-* ToDo
+* [ToDo](https://github.com/alexandresoliveira/complete-projects-todo)
   * back-end 
     * Java
   * front-end
@@ -15,6 +15,5 @@ This repository there are a collections of projects with technologies I know or 
     * React Native
     * Android (Kotlin)
     * iOS (Swift)
-
-> *More details about ToDo project is avaiable inside you folder.*
+  
 
