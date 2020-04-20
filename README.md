@@ -2,7 +2,7 @@
 
 ## Propouse
 
-This repository there are a collections of projects with many technologies when I now or learn.
+This repository there are a collections of projects with technologies I know or learning.
 
 ## Projects
 
