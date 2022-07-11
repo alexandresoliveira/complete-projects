@@ -1,0 +1,36 @@
+spring:
+  profiles:
+    active: "@spring.profiles.active@"
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  datasource:
+    url: "@db.url@"
+    username: "@db.user@"
+    password: "@db.password@"
+  flyway:
+    url: "@db.url@"
+    user: "@db.user@"
+    password: "@db.password@"
+    encoding: UTF-8
+    baseline-on-migrate: true
+    clean-on-validation-error: true
+  mvc:
+    static-path-pattern: /static/**
+    
+blog:
+  jwt:
+    secret: $2y$12$jeUz9ITgPdcarB5w4HUK2eivsMeCbxYphgTHp1421QKP0powtCTU. 
+    expiration: 86400000
+    issuer: "BlogApi"
+  user:
+    admin:
+      email: "@user.admin.email@"
+      password: "@user.admin.password@"
+  cors:
+    allowed-origins: "http://localhost:3000,http://localhost:8080"
+  photo-collection:
+    root-dir: "@photo.collection.root.dir@"
+    suffix-collection-post-user: "'s Post"
+    

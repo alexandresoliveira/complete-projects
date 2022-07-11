@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+
+  .principal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      a {
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 22px;
+      }
+    }
+  }
+
+  .menu {
+    display: flex;
+    justify-content: center;
+
+    a {
+      text-decoration: none;
+      color: #f3f3f3;
+      padding: 0 10px;
+    }
+  }
+}

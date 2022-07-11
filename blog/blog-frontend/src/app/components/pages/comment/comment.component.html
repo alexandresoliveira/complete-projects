@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>New Comment</h1>
+  <form [formGroup]="newCommentForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Text</mat-label>
+      <input matInput formControlName="text" />
+      <mat-error *ngIf="formControls.text.errors">Required field</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+
+<div class="button-container">
+  <button
+    mat-fab
+    color="primary"
+    aria-label="Example icon button with a delete icon"
+    (click)="submit()"
+  >
+    <mat-icon>save</mat-icon>
+  </button>
+</div>

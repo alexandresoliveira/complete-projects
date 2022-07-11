@@ -1,0 +1,80 @@
+<mat-list *ngIf="posts">
+  <mat-card class="post" *ngFor="let post of posts.content">
+    <mat-card-header>
+      <div mat-card-avatar class="header-image primary">
+        <mat-icon aria-hidden="false" aria-label="Example home icon"
+          >person</mat-icon
+        >
+      </div>
+      <mat-card-title class="card-title">
+        <span>{{ post.byUsername }}</span>
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="albumUser(post.byUserId)">
+            <mat-icon>photo</mat-icon>
+            <span>Albums</span>
+          </button>
+        </mat-menu>
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ post.createdAt | date: "full" }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img
+      *ngIf="post.linkPhoto"
+      mat-card-image
+      src="{{ post.linkPhoto }}"
+      alt="{{ post.text }}"
+    />
+    <p *ngIf="!post.link && !post.linkPhoto && post.text">{{ post.text }}</p>
+    <a *ngIf="post.link" href="{{ post.link }}">{{ post.text }}</a>
+    <mat-card-actions class="actions">
+      <button mat-button (click)="editPost(post.id)">COMMENT</button>
+      <button
+        mat-button
+        color="warn"
+        *ngIf="post.isLoggedUser"
+        (click)="remove(post)"
+      >
+        DELETE
+      </button>
+    </mat-card-actions>
+    <div *ngIf="post.comments">
+      <mat-card class="comments" *ngFor="let comment of post.comments">
+        <div>
+          <label>{{ comment.username }}</label>
+          <small>{{ comment.createdAt | date: "full" }}</small>
+          <div class="message">
+            <p>{{ comment.description }}</p>
+            <button
+              mat-button
+              *ngIf="comment.isLoggedUser"
+              (click)="removeComment(post, comment)"
+            >
+              <mat-icon aria-hidden="false" aria-label="Example home icon"
+                >delete</mat-icon
+              >
+            </button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </mat-card>
+</mat-list>
+
+<div class="button-container">
+  <button
+    mat-fab
+    color="primary"
+    aria-label="Example icon button with a delete icon"
+    routerLink="/post/new"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

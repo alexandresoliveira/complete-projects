@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>New Photo</h1>
+  <form [formGroup]="newPhotoAlbumForm" (ngSubmit)="submit()">
+    <div>
+      <mat-label>Photo</mat-label>
+      <input
+        type="file"
+        formControlName="photo"
+        (change)="onFileSelected($event)"
+      />
+    </div>
+  </form>
+</div>
+
+<div class="button-container">
+  <button
+    mat-fab
+    color="primary"
+    aria-label="Example icon button with a delete icon"
+    (click)="submit()"
+  >
+    <mat-icon>save</mat-icon>
+  </button>
+</div>

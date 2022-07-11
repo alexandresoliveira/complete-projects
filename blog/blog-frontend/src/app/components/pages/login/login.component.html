@@ -1,0 +1,141 @@
+<mat-card class="card">
+  <div class="action">
+    <h1>!blog</h1>
+    <mat-tab-group
+      mat-stretch-tabs
+      class="change-action"
+      mat-align-tabs="center"
+    >
+      <mat-tab label="Sign In">
+        <form [formGroup]="signInForm" (ngSubmit)="signInSubmit()">
+          <mat-form-field>
+            <input
+              matInput
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              formControlName="email"
+            />
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error
+              *ngIf="
+                signInFormControls.email.errors &&
+                signInFormControls.email.errors.required
+              "
+              >Email is required</mat-error
+            >
+            <mat-error
+              *ngIf="
+                signInFormControls.email.errors &&
+                signInFormControls.email.errors.email
+              "
+              >Invalid email</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              type="password"
+              name="password"
+              placeholder="Password"
+              formControlName="password"
+            />
+            <mat-icon matSuffix>lock</mat-icon>
+            <mat-error
+              *ngIf="
+                signInFormControls.password.errors &&
+                signInFormControls.password.errors.required
+              "
+              >Password is required</mat-error
+            >
+            <mat-error
+              *ngIf="
+                signInFormControls.password.errors &&
+                signInFormControls.password.errors.minlength
+              "
+              >Password require a minimum 6 caracteres</mat-error
+            >
+          </mat-form-field>
+          <button mat-raised-button color="primary">Send</button>
+        </form>
+      </mat-tab>
+      <mat-tab label="Sign Up">
+        <form [formGroup]="signUpForm" (ngSubmit)="signUpSubmit()">
+          <mat-form-field>
+            <input
+              matInput
+              type="text"
+              name="name"
+              placeholder="Name"
+              formControlName="name"
+            />
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-error
+              *ngIf="
+                signUpFormControls.name.errors &&
+                signUpFormControls.name.errors.required
+              "
+              >Name is required</mat-error
+            >
+            <mat-error
+              *ngIf="
+                signUpFormControls.name.errors &&
+                signUpFormControls.name.errors.minlength
+              "
+              >Name require a minimum 3 caracteres</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              formControlName="email"
+            />
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error
+              *ngIf="
+                signUpFormControls.email.errors &&
+                signUpFormControls.email.errors.required
+              "
+              >Email is required</mat-error
+            >
+            <mat-error
+              *ngIf="
+                signUpFormControls.email.errors &&
+                signUpFormControls.email.errors.email
+              "
+              >Invalid email</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              type="password"
+              name="password"
+              placeholder="Password"
+              formControlName="password"
+            />
+            <mat-icon matSuffix>lock</mat-icon>
+            <mat-error
+              *ngIf="
+                signUpFormControls.password.errors &&
+                signUpFormControls.password.errors.required
+              "
+              >Password is required</mat-error
+            >
+            <mat-error
+              *ngIf="
+                signUpFormControls.password.errors &&
+                signUpFormControls.password.errors.minlength
+              "
+              >Password require a minimum 6 caracteres</mat-error
+            >
+          </mat-form-field>
+          <button mat-raised-button color="primary">Send</button>
+        </form>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</mat-card>

@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container {
+  padding: 10px 24px;
+  flex: 1;
+  max-width: 480px;
+}
+
+.item-card {
+  display: flex;
+  align-items: center;
+
+  span {
+    flex: 1;
+    padding: 0 10px;
+  }
+
+  & + .item-card {
+    margin-top: 10px;
+  }
+
+  .item-delete {
+    color: #f44336;
+  }
+}

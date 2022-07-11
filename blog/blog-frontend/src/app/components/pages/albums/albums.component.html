@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Albums</h1>
+  <mat-list role="list">
+    <mat-card class="item-card" *ngFor="let album of albums.content">
+      <mat-icon>collections</mat-icon>
+      <span (click)="showAlbum(album.userId, album.id)">{{ album.title }}</span>
+      <mat-icon
+        *ngIf="album.isLoggedUser"
+        class="item-delete"
+        (click)="deleteAlbum(album.userId, album.id)"
+        >delete</mat-icon
+      >
+    </mat-card>
+  </mat-list>
+</div>

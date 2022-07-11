@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container {
+  padding: 10px 24px;
+  flex: 1;
+  max-width: 480px;
+}
+
+.button-container {
+  width: 100%;
+  padding: 30px 0;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+}

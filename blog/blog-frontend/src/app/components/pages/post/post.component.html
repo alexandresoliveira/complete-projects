@@ -1,0 +1,48 @@
+<div class="container">
+  <h1>New Post</h1>
+  <form [formGroup]="newPostForm" (ngSubmit)="submit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Type Post</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="text">Text</mat-option>
+        <mat-option value="link">Link</mat-option>
+        <mat-option value="photo">Photo</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field
+      appearance="fill"
+      *ngIf="formControls.type.value === 'text'"
+    >
+      <mat-label>Text</mat-label>
+      <input matInput formControlName="text" />
+      <mat-error *ngIf="formControls.text.errors">Required field</mat-error>
+    </mat-form-field>
+    <mat-form-field
+      appearance="fill"
+      *ngIf="formControls.type.value === 'link'"
+    >
+      <mat-label>Link</mat-label>
+      <input matInput formControlName="link" />
+      <mat-error *ngIf="formControls.link.errors">Required field</mat-error>
+    </mat-form-field>
+    <div *ngIf="formControls.type.value === 'photo'">
+      <mat-label>Photo</mat-label>
+      <input
+        type="file"
+        formControlName="photo"
+        (change)="onFileSelected($event)"
+      />
+    </div>
+  </form>
+</div>
+
+<div class="button-container">
+  <button
+    mat-fab
+    color="primary"
+    aria-label="Example icon button with a delete icon"
+    (click)="submit()"
+  >
+    <mat-icon>save</mat-icon>
+  </button>
+</div>

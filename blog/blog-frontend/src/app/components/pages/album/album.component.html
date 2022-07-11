@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>{{ album.title }}</h1>
+  <mat-grid-list cols="2" rowHeight="2:1" *ngIf="album.photoUrls">
+    <mat-grid-tile *ngFor="let link of album.photoUrls">
+      <img src="{{ link }}" alt="teste" />
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<div class="button-container">
+  <button
+    mat-fab
+    color="primary"
+    aria-label="Example icon button with a delete icon"
+    (click)="newPhotoAlbum(album.userId, album.id)"
+  >
+    <mat-icon>upload</mat-icon>
+  </button>
+</div>

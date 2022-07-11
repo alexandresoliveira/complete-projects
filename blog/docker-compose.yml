@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  blog-db:
+    image: postgres:latest
+    container_name: blog-db
+    environment:
+      - POSTGRES_DB=blog-db
+      - POSTGRES_USER=blog
+      - POSTGRES_PASSWORD=blog
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
+    networks:
+      - blog-network
+    volumes:
+      - blog-db-data:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+  blog-db-admin:
+    image: dpage/pgadmin4
+    container_name: blog-db-admin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=dev@email.com
+      - PGADMIN_DEFAULT_PASSWORD=123
+      - PGADMIN_CONFIG_LOGIN_BANNER="Authorised users only!"
+    ports:
+      - 8000:80
+    networks:
+      - blog-network
+    volumes:
+      - blog-db-admin-data:/var/lib/pgadmin
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    depends_on:
+      - blog-db
+  blog-cache:
+    image: redis:6.2.1-alpine
+    container_name: blog-cache
+    ports:
+      - 6379:6379
+    networks:
+      - blog-network
+    volumes:
+      - blog-cache-data:/data
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+      
+networks:
+  blog-network:
+    driver: bridge
+   
+volumes:
+  blog-db-data:
+    driver: local
+  blog-db-admin-data:
+    driver: local
+  blog-cache-data:
+    driver: local
+      
